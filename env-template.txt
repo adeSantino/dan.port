@@ -1,0 +1,18 @@
+# EmailJS Configuration
+# Get these values from your EmailJS dashboard at https://www.emailjs.com/
+
+# Your EmailJS Service ID (e.g., service_xxxxxxx)
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id_here
+
+# Your EmailJS Template ID (e.g., template_xxxxxxx)
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id_here
+
+# Your EmailJS Public Key (e.g., xxxxxxxxxxxxxxxxxxxx)
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key_here
+
+# Your Email Address (where meeting requests will be sent)
+NEXT_PUBLIC_EMAIL_ADDRESS=adriannetelan20@gmail.com
+
+# Portfolio Configuration
+NEXT_PUBLIC_PORTFOLIO_TITLE=Ad.dev
+NEXT_PUBLIC_PORTFOLIO_DESCRIPTION=Dan Adrianne Telan - Software Developer Portfolio

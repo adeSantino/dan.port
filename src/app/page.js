@@ -61,16 +61,21 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-black">
       <Header onTabChange={handleTabChange} />
-      <div className="flex">
-        {/* Left Sidebar - Profile (always visible) */}
-        <div className="w-1/5">
+      <div className="flex flex-col lg:flex-row">
+        {/* Left Sidebar - Profile (hidden on mobile, visible on desktop) */}
+        <div className="hidden lg:block lg:w-1/5">
           <Profile />
         </div>
         
         {/* Main Content Area */}
-        <div className="w-4/5">
+        <div className="w-full lg:w-4/5">
+          {/* Mobile Profile Section - Only visible on mobile */}
+          <div className="lg:hidden">
+            <Profile />
+          </div>
+          
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}

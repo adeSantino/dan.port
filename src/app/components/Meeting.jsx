@@ -67,39 +67,39 @@ export default function Meeting() {
   };
 
   return (
-    <div className="bg-black text-white p-8">
+    <div className="bg-black text-white p-4 sm:p-6 lg:p-8">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white mb-4">Schedule a Meeting</h1>
-          <p className="text-gray-400 text-lg">Let's discuss your project and how I can help you</p>
+        <div className="text-center mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 sm:mb-4">Schedule a Meeting</h1>
+          <p className="text-gray-400 text-base sm:text-lg">Let's discuss your project and how I can help you</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {/* Calendar Section */}
-          <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
-            <h2 className="text-2xl font-bold text-white mb-6">Select Date & Time</h2>
+          <div className="bg-gray-900 p-4 sm:p-6 rounded-lg border border-gray-800">
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Select Date & Time</h2>
             
             {/* Calendar */}
-            <div className="mb-6">
-              <div className="text-center mb-4">
-                <h3 className="text-lg font-semibold text-white">
+            <div className="mb-4 sm:mb-6">
+              <div className="text-center mb-3 sm:mb-4">
+                <h3 className="text-base sm:text-lg font-semibold text-white">
                   {currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                 </h3>
               </div>
               
               {/* Calendar Grid */}
-              <div className="grid grid-cols-7 gap-1 mb-4">
+              <div className="grid grid-cols-7 gap-1 mb-3 sm:mb-4">
                 {/* Day headers */}
                 {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-                  <div key={day} className="text-center text-gray-400 text-sm font-medium py-2">
+                  <div key={day} className="text-center text-gray-400 text-xs sm:text-sm font-medium py-1 sm:py-2">
                     {day}
                   </div>
                 ))}
                 
                 {/* Empty cells for days before month starts */}
                 {Array.from({ length: firstDayOfMonth }).map((_, index) => (
-                  <div key={`empty-${index}`} className="h-10"></div>
+                  <div key={`empty-${index}`} className="h-8 sm:h-10"></div>
                 ))}
                 
                 {/* Calendar days */}
@@ -113,7 +113,7 @@ export default function Meeting() {
                       key={day}
                       onClick={() => !isPast && handleDateSelect(day)}
                       disabled={isPast}
-                      className={`h-10 w-10 rounded-full text-sm font-medium transition-colors ${
+                      className={`h-8 sm:h-10 w-8 sm:w-10 rounded-full text-xs sm:text-sm font-medium transition-colors ${
                         isSelected
                           ? 'bg-white text-black'
                           : isToday
@@ -133,13 +133,13 @@ export default function Meeting() {
             {/* Time Slots */}
             {selectedDate && (
               <div>
-                <h4 className="text-lg font-semibold text-white mb-3">Available Times</h4>
-                <div className="grid grid-cols-3 gap-2">
+                <h4 className="text-base sm:text-lg font-semibold text-white mb-3">Available Times</h4>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {timeSlots.map(time => (
                     <button
                       key={time}
                       onClick={() => setSelectedTime(time)}
-                      className={`p-2 rounded text-sm font-medium transition-colors ${
+                      className={`p-2 rounded text-xs sm:text-sm font-medium transition-colors ${
                         selectedTime === time
                           ? 'bg-white text-black'
                           : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
@@ -154,14 +154,14 @@ export default function Meeting() {
           </div>
 
           {/* Meeting Details Form */}
-          <div className="bg-gray-900 p-6 rounded-lg border border-gray-800">
-            <h2 className="text-2xl font-bold text-white mb-6">Meeting Details</h2>
+          <div className="bg-gray-900 p-4 sm:p-6 rounded-lg border border-gray-800">
+            <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Meeting Details</h2>
             
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Meeting Type */}
               <div>
-                <label className="block text-white font-medium mb-2">Meeting Type</label>
-                <div className="flex space-x-4">
+                <label className="block text-white font-medium mb-2 text-sm sm:text-base">Meeting Type</label>
+                <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
                   <label className="flex items-center">
                     <input
                       type="radio"
@@ -170,7 +170,7 @@ export default function Meeting() {
                       onChange={(e) => setMeetingType(e.target.value)}
                       className="mr-2"
                     />
-                    <span className="text-gray-300">Video Call</span>
+                    <span className="text-gray-300 text-sm sm:text-base">Video Call</span>
                   </label>
                   <label className="flex items-center">
                     <input
@@ -180,45 +180,45 @@ export default function Meeting() {
                       onChange={(e) => setMeetingType(e.target.value)}
                       className="mr-2"
                     />
-                    <span className="text-gray-300">Phone Call</span>
+                    <span className="text-gray-300 text-sm sm:text-base">Phone Call</span>
                   </label>
                 </div>
               </div>
 
               {/* Name */}
               <div>
-                <label className="block text-white font-medium mb-2">Full Name</label>
+                <label className="block text-white font-medium mb-2 text-sm sm:text-base">Full Name</label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   required
-                  className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white"
+                  className="w-full p-2 sm:p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white text-sm sm:text-base"
                   placeholder="Your full name"
                 />
               </div>
 
               {/* Email */}
               <div>
-                <label className="block text-white font-medium mb-2">Email Address</label>
+                <label className="block text-white font-medium mb-2 text-sm sm:text-base">Email Address</label>
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white"
+                  className="w-full p-2 sm:p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white text-sm sm:text-base"
                   placeholder="your.email@example.com"
                 />
               </div>
 
               {/* Message */}
               <div>
-                <label className="block text-white font-medium mb-2">Message (Optional)</label>
+                <label className="block text-white font-medium mb-2 text-sm sm:text-base">Message (Optional)</label>
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  rows={4}
-                  className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white"
+                  rows={3}
+                  className="w-full p-2 sm:p-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white text-sm sm:text-base"
                   placeholder="Tell me about your project or what you'd like to discuss..."
                 />
               </div>
@@ -227,7 +227,7 @@ export default function Meeting() {
               <button
                 type="submit"
                 disabled={!selectedDate || !selectedTime || !name || !email}
-                className="w-full bg-white text-black py-3 px-6 rounded-lg font-semibold hover:bg-gray-200 transition-colors disabled:bg-gray-600 disabled:cursor-not-allowed"
+                className="w-full bg-white text-black py-2 sm:py-3 px-4 sm:px-6 rounded-lg font-semibold hover:bg-gray-200 transition-colors disabled:bg-gray-600 disabled:cursor-not-allowed text-sm sm:text-base"
               >
                 Schedule Meeting
               </button>
@@ -235,15 +235,15 @@ export default function Meeting() {
 
             {/* Selected Details Summary */}
             {selectedDate && selectedTime && (
-              <div className="mt-6 p-4 bg-gray-800 rounded-lg">
-                <h4 className="text-white font-semibold mb-2">Meeting Summary</h4>
-                <p className="text-gray-300 text-sm">
+              <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-gray-800 rounded-lg">
+                <h4 className="text-white font-semibold mb-2 text-sm sm:text-base">Meeting Summary</h4>
+                <p className="text-gray-300 text-xs sm:text-sm">
                   <strong>Date:</strong> {currentDate.toLocaleDateString('en-US', { month: 'long' })} {selectedDate}, {currentYear}
                 </p>
-                <p className="text-gray-300 text-sm">
+                <p className="text-gray-300 text-xs sm:text-sm">
                   <strong>Time:</strong> {selectedTime}
                 </p>
-                <p className="text-gray-300 text-sm">
+                <p className="text-gray-300 text-xs sm:text-sm">
                   <strong>Type:</strong> {meetingType === 'video' ? 'Video Call' : 'Phone Call'}
                 </p>
               </div>
@@ -252,8 +252,8 @@ export default function Meeting() {
         </div>
 
         {/* Contact Info */}
-        <div className="mt-8 text-center">
-          <p className="text-gray-400">
+        <div className="mt-6 sm:mt-8 text-center">
+          <p className="text-gray-400 text-sm sm:text-base">
             Need to reschedule? Contact me at{' '}
             <a href="mailto:adriannetelan20@gmail.com" className="text-white hover:underline">
               adriannetelan20@gmail.com
